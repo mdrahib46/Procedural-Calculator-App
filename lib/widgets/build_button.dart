@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 
-
 class BuildButton extends StatelessWidget {
   const BuildButton({
-    super.key, required this.text, this.color, required this.onTap,
+    super.key,
+    required this.text,
+    this.color,
+    required this.onTap,
+    this.flex = 1,
   });
 
   final String text;
   final Color? color;
   final VoidCallback onTap;
-
+  final int flex;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
+      flex: flex,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
@@ -25,7 +29,13 @@ class BuildButton extends StatelessWidget {
             backgroundColor: color ?? Colors.grey[800],
           ),
           onPressed: onTap,
-          child: Text(text, style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w600, color: Colors.white)),
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );
